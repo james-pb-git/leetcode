@@ -1,10 +1,9 @@
 package leetcode_in_java;
 
 /**
- * Created by bopang on 15/7/28.
+ * Created by bopang on 15/8/1.
  */
-
-public class Solution {
+class BestTimeToBuyAndSellStockII {
     public int maxProfit(int[] prices) {
         if( null == prices || prices.length == 0)
             return 0;
@@ -14,8 +13,5 @@ public class Solution {
                 profit += prices[ idx ] - prices[ idx - 1 ];
         }
         return profit;
-    }
-    public static void main( String args[] ) {
-        System.out.println( "Hello Leetcode");
     }
 }
