@@ -6,11 +6,10 @@ import java.util.*;
 
 public class Solution {
 
-    public TreeNode invertTree(TreeNode root) {
-        return null;
-    }
-    public static void main( String args[] ) {
-        System.out.println( "Hello Leetcode");
 
+
+    public static void main( String args[] ) {
+        System.out.println("Hello Leetcode");
+        Solution solution = new Solution();
     }
 }
