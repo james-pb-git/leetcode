@@ -3,7 +3,7 @@ package leetcode_in_java;
 /**
  * Created by bopang on 15/8/13.
  */
-public class MaximumSubarray {
+class MaximumSubarray {
     public int maxSubArray(int[] nums) {
 
         if( null == nums || nums.length == 0 )

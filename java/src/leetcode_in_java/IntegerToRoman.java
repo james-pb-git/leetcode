@@ -3,7 +3,7 @@ package leetcode_in_java;
 /**
  * Created by bopang on 15/8/14.
  */
-public class IntegerToRoman {
+class IntegerToRoman {
     public String intToRoman(int num) {
         char[] romanMap = new char[]{ 'I', 'V', 'X', 'L', 'C', 'D',  'M' };
         int[]  numMap = new int[]{     1 ,  5 ,  10,  50, 100, 500, 1000 };

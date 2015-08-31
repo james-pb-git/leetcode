@@ -3,7 +3,7 @@ package leetcode_in_java;
 /**
  * Created by bopang on 15/8/13.
  */
-public class ClimbingStairs {
+class ClimbingStairs {
     public int climbStairs(int n) {
         if( n <= 0 )
             return 0;

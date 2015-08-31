@@ -3,7 +3,7 @@ package leetcode_in_java;
 /**
  * Created by bopang on 15/8/15.
  */
-public class ConvertSortedArrayToBinarySearchTree {
+class ConvertSortedArrayToBinarySearchTree {
     private TreeNode recursiveSortedArrayToBST( int[] nums, int left, int right ) {
         TreeNode curHead = new TreeNode( 0 );
         if( left == right ) {

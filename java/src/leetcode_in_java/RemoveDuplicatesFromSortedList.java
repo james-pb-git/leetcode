@@ -3,7 +3,7 @@ package leetcode_in_java;
 /**
  * Created by bopang on 15/8/13.
  */
-public class RemoveDuplicatesFromSortedList {
+class RemoveDuplicatesFromSortedList {
     public ListNode deleteDuplicates(ListNode head) {
         if( null == head )
             return null;
