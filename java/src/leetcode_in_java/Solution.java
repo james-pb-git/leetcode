@@ -1,39 +1,46 @@
 package leetcode_in_java;
+import apple.laf.JRSUIUtils;
+
+import javax.swing.*;
 import java.util.*;
+import java.util.concurrent.LinkedBlockingDeque;
+
 /**
  * Created by bopang on 15/7/28.
  */
 
 public class Solution {
 
-    public void connect(TreeLinkNode root) {
-        if( null == root || null == root.left )
-            return;
-        TreeLinkNode prevHead = root;
-        TreeLinkNode curHead = root.left;
-        while( null != curHead ) {
-            TreeLinkNode prevIter = prevHead;
-            TreeLinkNode curIter = curHead;
+    public int findDuplicate(int[] nums) {
 
-            curIter.next = prevIter.right;
-            curIter = curIter.next;
-            while( null != prevIter.next ) {
-                prevIter = prevIter.next;
+        if( null == nums || 0 == nums.length )
+            return 0;
+        if( 1 == nums.length )
+            return nums[ 0 ];swap
 
-                curIter.next = prevIter.left;
-                curIter = curIter.next;
+        int len = nums.length;
+        int N = len - 1;
 
-                curIter.next = prevIter.right;
-                curIter = curIter.next;
+        int left = 0;
+        int right = N;
+        int mid, cntMid;
+        while( left <= right ) {
+            mid = left + ( right - left ) / 2;
+            cntMid = 0;
+            for( int idx = 0; idx < len; idx ++ ) {
+                if (nums[idx] < mid)
+                    cntMid++;
             }
-
-            prevHead = curHead;
-            curHead = curHead.left;
+            if( cntMid < len / 2 )
+                left = mid + 1;
+            if( cntMid > len / 2 )
+                right = mid - 1;
         }
+
     }
 
-    public static void main( String args[] ) {
-        System.out.println("Hello Leetcode");
-        Solution solution = new Solution();
+   public static void main( String args[] ) {
+       System.out.println("Hello Leetcode");
+       Solution solution = new Solution();
     }
 }
