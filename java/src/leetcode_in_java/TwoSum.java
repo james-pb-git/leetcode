@@ -30,7 +30,7 @@ public class TwoSum {
         return res;
     }
 
-    public int[] twoSumHash(int[] nums, int target) {
+    public int[] twoSumHashOnePass(int[] nums, int target) {
         if (null == nums || nums.length < 2)
             return null;
         Map<Integer, Integer> requiredValue = new HashMap<Integer, Integer>();
