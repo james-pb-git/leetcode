@@ -32,7 +32,7 @@ public class AddTwoNumbers {
         }
         return res;
     }
-    
+
     public ListNode addTwoNumbersSolution2(ListNode l1, ListNode l2) {
         int digit = 0;
         ListNode res = new ListNode(0);
