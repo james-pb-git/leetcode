@@ -1,7 +1,7 @@
 import sys
-import KeyboardRow
+
+class Solution(object):
+
 
 if __name__ == '__main__':
-    words = ["abdfs","cccd","a","qwwewm"]
-    solution = KeyboardRow.KeyboardRow()
-    print solution.findWordsSolution2(words)
+    solution = Solution()
