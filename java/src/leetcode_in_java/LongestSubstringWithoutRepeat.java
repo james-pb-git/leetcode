@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by bopang on 18/3/13.
  */
-public class LengthOfLongestSubstring {
+public class LongestSubstringWithoutRepeat {
     public int lengthOfLongestSubstring(String s) {
         if (null == s || s.length() == 0)
             return 0;

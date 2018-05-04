@@ -15,7 +15,7 @@ public class TwoSum {
         boolean found = false;
         int idx1 = 0, idx2 = 1;
         for (; idx1 < nums.length - 1; idx1++) {
-            for (; idx2 < nums.length; idx2++) {
+            for (idx2 = idx1 + 1; idx2 < nums.length; idx2++) {
                 if (nums[idx1] + nums[idx2] == target) {
                     found = true;
                     break;
@@ -23,7 +23,6 @@ public class TwoSum {
             }
             if (found)
                 break;
-            idx2 = idx1 + 2; // This is important!
         }
         res[0] = idx1;
         res[1] = idx2;
