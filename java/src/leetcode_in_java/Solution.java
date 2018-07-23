@@ -11,22 +11,41 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class Solution {
 
-    private int[] preprocess(String needle) {
-        int[] res = new int[needle.length()];
-        res[0] = -1;
-
+    private Integer dfs(Stack<TreeNode> stack) {
+        // When called, it's guaranteed the satck is not empty.
+        while (true) {
+            TreeNode node = stack.pop();
+            if (node.right != null)
+                stack.push(node.right);
+            if (node.left != null)
+                stack.push(node.left);
+            if (node.right == null && node.left == null)
+                return node.val;
+        }
     }
 
-    public int strStr(String haystack, String needle) {
-        if (null == haystack || haystack.length() == 0 ||
-                null == needle || needle.length() == 0)
-            return -1;
-        int[] next = preprocess(needle);
-
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        Stack<TreeNode> stack1 = new Stack<TreeNode>();
+        Stack<TreeNode> stack2 = new Stack<TreeNode>();
+        stack1.push(root1);
+        stack2.push(root2);
+        while (!stack1.isEmpty() && !stack2.isEmpty()) {
+            if (!dfs(stack1).equals(dfs(stack2)))
+                return false;
+        }
+        /*if (!stack1.isEmpty() || !stack2.isEmpty())
+            return false;
+        return true;*/
+        // Logic simplified.
+        return stack1.isEmpty() && stack2.isEmpty();
     }
 
     public static void main( String args[] ) {
         System.out.println("Hello Leetcode");
         Solution solution = new Solution();
+        Integer a = 2;
+        Integer b = new Integer(2);
+        System.out.println(a);
+        System.out.println(b.equals(a));
     }
 }
