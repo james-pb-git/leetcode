@@ -11,41 +11,75 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class Solution {
 
-    private Integer dfs(Stack<TreeNode> stack) {
-        // When called, it's guaranteed the satck is not empty.
-        while (true) {
-            TreeNode node = stack.pop();
-            if (node.right != null)
-                stack.push(node.right);
-            if (node.left != null)
-                stack.push(node.left);
-            if (node.right == null && node.left == null)
-                return node.val;
-        }
+    public int robotSim(int[] commands, int[][] obstacles) {
+        return 0;
     }
 
-    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
-        Stack<TreeNode> stack1 = new Stack<TreeNode>();
-        Stack<TreeNode> stack2 = new Stack<TreeNode>();
-        stack1.push(root1);
-        stack2.push(root2);
-        while (!stack1.isEmpty() && !stack2.isEmpty()) {
-            if (!dfs(stack1).equals(dfs(stack2)))
-                return false;
+    public ListNode middleNode(ListNode head) {
+        ListNode fast = head, slow = head;
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+            if (fast.next != null)
+                fast = fast.next;
         }
-        /*if (!stack1.isEmpty() || !stack2.isEmpty())
-            return false;
-        return true;*/
-        // Logic simplified.
-        return stack1.isEmpty() && stack2.isEmpty();
+        return slow;
+    }
+
+    public boolean stoneGame(int[] piles) {
+        return true;
+    }
+
+    private int gcd (int A, int B) {
+        if (A > B)
+            return gcd(B, A);
+        int tmp;
+        while(A > 0) {
+            tmp = B % A;
+            B = A;
+            A = tmp;
+        }
+        return B;
+    }
+
+    private int lcm(int A, int B) {
+        return A * B / gcd(A, B);
+    }
+
+    private int findM(int N, int A, int B, int MaxAns) {
+        int left = 1, right = MaxAns, mid, cntMid;
+        while (left < right) {
+            mid = left + ((right - left) >> 1);
+            cntMid = mid / A + mid / B - mid / lcm(A, B);
+            if (cntMid >= N)
+                right = mid;
+            else
+                left = mid + 1;
+        }
+        return left;
+    }
+
+    public int nthMagicalNumber(int N, int A, int B) {
+        int MaxAns = 1000000007;
+        int UnitCount = MaxAns / A + MaxAns / B - MaxAns / (lcm(A, B));
+        if (N <= UnitCount)
+            return findM(N, A, B, MaxAns);
+        double k = N / (UnitCount + 0.5);
+        N = N - (int) Math.floor(k);
+        return findM(N, A, B, MaxAns);
     }
 
     public static void main( String args[] ) {
         System.out.println("Hello Leetcode");
         Solution solution = new Solution();
-        Integer a = 2;
-        Integer b = new Integer(2);
-        System.out.println(a);
-        System.out.println(b.equals(a));
+
+        long startTime = System.nanoTime();
+        int num = solution.nthMagicalNumber(1, 2, 3);
+        long endTime = System.nanoTime();
+        System.out.println(num);
+        long duration = (endTime - startTime) / 1000000;
+        System.out.println(duration);
     }
 }
+
+
