@@ -15,43 +15,21 @@ public class Solution {
         return 0;
     }
 
-    public ListNode middleNode(ListNode head) {
-        ListNode fast = head, slow = head;
-        while (fast.next != null) {
-            fast = fast.next;
-            slow = slow.next;
-            if (fast.next != null)
-                fast = fast.next;
+    private List<Integer> accWeight = new ArrayList<Integer>();
+    public Solution(int[] w) {
+        int curAcc = 0;
+        for (int ele : w) {
+            curAcc += ele;
+            accWeight.add(curAcc);
         }
-        return slow;
     }
 
-    public boolean stoneGame(int[] piles) {
-        return true;
-    }
-
-    private int gcd (int A, int B) {
-        if (A > B)
-            return gcd(B, A);
-        int tmp;
-        while(A > 0) {
-            tmp = B % A;
-            B = A;
-            A = tmp;
-        }
-        return B;
-    }
-
-    private int lcm(int A, int B) {
-        return A * B / gcd(A, B);
-    }
-
-    private int findM(int N, int A, int B, int MaxAns) {
-        int left = 1, right = MaxAns, mid, cntMid;
+    public int pickIndex() {
+        double randomVal = Math.random() * this.accWeight.get(accWeight.size() - 1);
+        int left = 0, right = this.accWeight.size() - 1, mid;
         while (left < right) {
-            mid = left + ((right - left) >> 1);
-            cntMid = mid / A + mid / B - mid / lcm(A, B);
-            if (cntMid >= N)
+            mid = left + (right - left)/2;
+            if (randomVal <= accWeight.get(mid))
                 right = mid;
             else
                 left = mid + 1;
@@ -59,24 +37,15 @@ public class Solution {
         return left;
     }
 
-    public int nthMagicalNumber(int N, int A, int B) {
-        int MaxAns = 1000000007;
-        int UnitCount = MaxAns / A + MaxAns / B - MaxAns / (lcm(A, B));
-        if (N <= UnitCount)
-            return findM(N, A, B, MaxAns);
-        double k = N / (UnitCount + 0.5);
-        N = N - (int) Math.floor(k);
-        return findM(N, A, B, MaxAns);
-    }
-
     public static void main( String args[] ) {
         System.out.println("Hello Leetcode");
-        Solution solution = new Solution();
+        int[] w = new int[]{1,3};
+        Solution solution = new Solution(w);
+        for (int i = 0; i < 50; i++)
+            System.out.println(solution.pickIndex());
 
         long startTime = System.nanoTime();
-        int num = solution.nthMagicalNumber(1, 2, 3);
         long endTime = System.nanoTime();
-        System.out.println(num);
         long duration = (endTime - startTime) / 1000000;
         System.out.println(duration);
     }
