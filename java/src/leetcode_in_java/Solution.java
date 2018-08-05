@@ -15,11 +15,28 @@ public class Solution {
         return 0;
     }
 
-
-
     public static void main( String args[] ) {
         System.out.println("Hello Leetcode");
         Solution solution = new Solution();
+
+        int[] a = new int[]{1,2,3};
+        a[2] = 4;
+        Integer[] intArr = new Integer[]{4,5,6};
+        intArr[2] = 5;
+
+        String[] strArr = new String[]{"abc", "ded", "sdf"};
+        strArr[2] = "Asdf";
+        System.out.println(Arrays.toString(strArr));
+
+
+        String[][] arr = new String[][]{{"abc", "dvd"}, {"def"}};
+        arr[0][1] = "abc";
+        System.out.println(arr[1]);
+        System.out.println(arr[0][1]);
+
+        String[] cloneOfArray = Arrays.copyOf(arr[0], 2);
+        System.out.println(arr[0]);
+        System.out.println(cloneOfArray[0]);
 
         long startTime = System.nanoTime();
         long endTime = System.nanoTime();
