@@ -15,10 +15,11 @@ public class Solution {
         return 0;
     }
 
+
     public static void main( String args[] ) {
         System.out.println("Hello Leetcode");
         Solution solution = new Solution();
-
+        
         int len = 4;
         ListNode dummy = new ListNode(-1), cur = dummy;
         for (int ind = 0; ind < len; ind ++) {
