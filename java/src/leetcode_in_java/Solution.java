@@ -11,22 +11,12 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class Solution {
 
-    public int robotSim(int[] commands, int[][] obstacles) {
-        return 0;
-    }
-
 
     public static void main( String args[] ) {
         System.out.println("Hello Leetcode");
         Solution solution = new Solution();
-        
-        int len = 4;
-        ListNode dummy = new ListNode(-1), cur = dummy;
-        for (int ind = 0; ind < len; ind ++) {
-            ListNode node = new ListNode(ind);
-            cur.next = node;
-            cur = cur.next;
-        }
+        int[] commands = new int[]{4,-1,3};
+        int[][] obstacles = new int[][]{};
 
         long startTime = System.nanoTime();
         long endTime = System.nanoTime();
