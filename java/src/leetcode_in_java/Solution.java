@@ -11,12 +11,9 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class Solution {
 
-
     public static void main( String args[] ) {
         System.out.println("Hello Leetcode");
         Solution solution = new Solution();
-        int[] commands = new int[]{4,-1,3};
-        int[][] obstacles = new int[][]{};
 
         long startTime = System.nanoTime();
         long endTime = System.nanoTime();
